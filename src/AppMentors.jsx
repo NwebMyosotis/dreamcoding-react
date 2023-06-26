@@ -46,6 +46,40 @@ export default function AppMentor() {
       >
         멘토의 이름을 바꾸기
       </button>
+      <button
+        onClick={() => {
+          const inputName = prompt("멘토 이름을 입력하세요");
+          const inputTitle = prompt("멘토의 경력을 입력하세요");
+          setPerson((person) => {
+            const newMentors = {
+              ...person,
+              mentors: [
+                ...person.mentors,
+                { name: inputName, title: inputTitle },
+              ],
+            };
+            return newMentors;
+          });
+        }}
+      >
+        멘토 추가
+      </button>
+      <button
+        onClick={() => {
+          const inputName = prompt("멘토 이름을 입력하세요");
+          setPerson((person) => {
+            const delMentor = {
+              ...person,
+              mentors: person.mentors.filter(
+                (mentor) => mentor.name !== inputName
+              ),
+            };
+            return delMentor;
+          });
+        }}
+      >
+        멘토 삭제
+      </button>
     </div>
   );
 }
